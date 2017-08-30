@@ -59,7 +59,9 @@ enable-tftp
 tftp-root={{ dnsmasq_tftpboot_dir }}
 {% endif %}
 {% if dnsmasq_enable_dhcp %}
+{%   if ansible_os_family != 'RedHat' or ansible_distribution_major_version|int > 6 %}
 dhcp-client-update
+{%   endif %}
 dhcp-boot={{ dnsmasq_dhcp_boot }}
 {%   if dnsmasq_dhcp_host_reservations is defined and dnsmasq_dhcp_host_reservations != [] %}
 {%     for item in dnsmasq_dhcp_host_reservations %}
