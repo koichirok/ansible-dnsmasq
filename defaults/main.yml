@@ -131,6 +131,11 @@ dnsmasq_pri_network: "{{ ansible_default_ipv4['network'] }}"
 # Defines if you want dnsmasq to read /etc/hosts
 dnsmasq_read_etc_hosts:
   true
+# Defines additional hosts files
+dnsmasq_additional_hosts_files:
+  []
+  # - /etc/dnsmasq.hosts.d/addn-hosts
+
   # Define if /etc/resolv.conf should be polled for changes
 dnsmasq_poll_etc_resolv_conf: true
 
