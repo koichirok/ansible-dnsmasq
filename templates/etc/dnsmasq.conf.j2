@@ -2,6 +2,11 @@ port={{ dnsmasq_listen_port }}
 {% if not dnsmasq_read_etc_hosts %}
 no-hosts
 {% endif %}
+{% if dnsmasq_additional_hosts_files is defined %}
+{%   for item in dnsmasq_additional_hosts_files %}
+addn-hosts={{ item }}
+{%   endfor %}
+{% endif %}
 {% if not dnsmasq_read_etc_resolv_conf %}
 no-resolv
 {% endif %}
